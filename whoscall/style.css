@@ -51,7 +51,7 @@ header .free{
 /*#region main*/
 
 .main{
-    background-image: url(/背景圖.jpeg);
+    background-image: url(./背景圖.jpeg);
     background-size: cover;
     height: 90vh;
     position: relative; 
