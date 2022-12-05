@@ -1,0 +1,379 @@
+/*#region header*/
+body{
+    padding-top: 80px;
+    /* font-family: "Varela Round", sans-serif; */
+}
+
+header{
+    height: 80px;
+    position: fixed;
+    top: 0;
+    background-color: #FFFFFF;
+    z-index: 2;
+    width: 100%;
+}
+header img{
+    height: 24px;
+    width: 141px;
+    margin: 27px 0px 27px 20px;
+}
+
+header .head{
+    display: flex;
+}
+header nav a{
+    width: 110px;
+    height: 24px;
+    margin: 0px 10px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    font-size: large;
+}
+header nav{
+    margin: auto 10px;
+}
+header button{
+    width: 141px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #03c300;
+    border-style: hidden;
+    font-size: 16px;
+    font-weight: bolder;
+    color:#F5F6F9;
+}
+header .free{
+    margin: auto 0px auto 380px;
+}
+/*#endregion header*/
+
+/*#region main*/
+
+.main{
+    background-image: url(/背景圖.jpeg);
+    background-size: cover;
+    height: 90vh;
+    position: relative; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.greenr{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+.greenl{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+.certified{
+    width: 800px;
+    height: 320px;
+}
+.content h1{
+    width: 600px;
+    height: 50px;
+    font-size: 65px;
+    margin: 15px 0px;
+    color:#03c300;
+    font-weight: bold;
+    font-family: "Varela Round", sans-serif;
+    box-sizing: inherit;
+}
+.content p:first-child{
+    width: 490px;
+    height: 100px;
+    font-size: 35px;
+    line-height: 45px;
+    font-weight: bold;
+}
+.content p:nth-child(2){
+    margin: 15px 15px;
+    font-weight: bold;
+    color: #03c300;
+}
+.content button{
+    width: 220px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: #03c300;
+    border-style: none;
+    font-size: 22px;
+    color: #F5F6F9;
+}
+/*#endregion main*/
+/*#region market survey*/
+.marketsurvey{
+    height: 220px;
+    text-align: center;
+    padding: 100px 0px 0px;
+}
+.marketsurvey div{
+  font-size: 28px;
+  margin: 10px;
+}
+.marketsurvey p{
+    font-size: 38px;
+}
+.marketsurvey span{
+    color: #03c300;
+    font-weight: bold;
+}
+/*#endregion market survey*/
+/*#region willing answer*/
+
+
+
+.willing div:first-child {
+    width: 450px;
+}
+.willing div:nth-child(2){
+    width: 450px;
+    height: 450px;
+}
+.willing img{
+    width: 100%;
+}
+.willing{
+    display: flex;
+    justify-content: center;
+}
+.willing h1{
+    color: #03c300;
+    font-size: 38px;
+    margin: 70pt 0px 30px 0px;
+    font-weight: bold;
+}
+.willing p{
+    font-size: 24px;
+    line-height: 35px;
+    font-weight: bold;
+}
+/*#endregion willing answer*/
+
+/*#region active callback*/
+.active div:first-child {
+    width: 450px;
+    margin: 60px;
+}
+.active div:nth-child(2){
+    width: 450px;
+    height: 450px;
+}
+.active img{
+    width: 100%;
+}
+.active{
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+}
+.active h1{
+    color: #03c300;
+    font-size: 38px;
+    margin: 70pt 0px 30px 0px;
+    font-weight: bold;
+}
+.active p{
+    font-size: 24px;
+    line-height: 35px;
+    font-weight: bold;
+}
+/*#endregion active callback*/
+/*#region see quickly*/
+.see div:first-child {
+    width: 450px;
+}
+.see div:nth-child(2){
+    width: 450px;
+    height: 450px;
+}
+.see img{
+    width: 100%;
+}
+.see{
+    display: flex;
+    justify-content: center;
+
+}
+.see h1{
+    color: #03c300;
+    font-size: 38px;
+    margin: 70pt 0px 30px 0px;
+    font-weight: bold;
+
+}
+.see p{
+    font-size: 24px;
+    line-height: 35px;
+    font-weight: bold;
+}
+.seequickly{
+    margin: 0px 0px 60px;
+}
+/*#endregion see quickly*/
+
+/*#region sales partner*/
+.salespartner{
+    background-color:#F5F6F9;
+    height: 500px;
+    text-align: center;
+}
+.salespartner h1{
+    font-size: 36px;
+    font-weight: bold;
+    padding: 50px 0px ;
+}
+.salespartner h2{
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0px 0px 10px;
+}
+.salespartner p{
+    font-size: 18px;
+    line-height: 25px;
+}
+.salespartner div{
+    width: 260px;
+}
+.salespartner .sales{
+    height: 350px;
+    width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+.salespartner img{
+    width: 145px;
+    height: 145px;
+}
+/*#endregion sales partner*/
+/*#region share each*/
+.shareeach h1{
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    margin: 30px;
+}
+.shareeach .sitem{
+    width: 300px;
+    border: 0.5px ridge #B7BBBF ;
+    border-style: inset;
+    margin: 20px;
+}
+.shareeach .share{
+ 
+    display: flex;
+    justify-content:center;
+    margin: 30px 0px 80px 0px;
+}
+.shareeach h2{
+    font-size: 24px;
+    margin: 0px 0px 30px 15px ;
+    font-weight: bold;
+}
+.shareeach p{
+    margin: 0px 0px 30px 15px;
+    line-height: 25px;
+}
+.share .mark{
+    width: 50px;
+    margin: 20px;
+}
+.share .logo{
+    display:flex;
+    justify-content: end;
+    margin: 0px 10px;
+}
+/*#endregion share each*/
+
+/*#region apply*/
+.apply h1{
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    padding: 90px 0px 0px 0px;
+}
+.apply{
+    height: 250px;
+    background-color: #F5F6F9;
+}
+.apply p{
+    text-align: center;
+    margin: 45px;
+    color: #03c300;
+    font-size: 20px;
+}
+/*#endregion apply*/
+/*#region footer*/
+footer{
+    background-color:#2C323F;
+    height: 380px;
+}
+
+footer h2{
+    color:#FFFFFF;  
+    margin: 15px 0px 15px;
+}
+footer p{
+    color:#B7BBBF;
+    margin: 10px 0px;
+}
+.contactus{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    width: 1280px;
+    height: 280px;
+}
+.cont{
+    display: flex;
+    width: 500px;
+    justify-content:space-around
+}
+.gogolook{
+    margin: auto;
+    width: 1200px;
+    padding: 10px 0px;
+    display: flex;
+    border-top:2px solid #F5F6F9;
+}
+.gogolook p{
+    margin: 0px 10px 0px 0px;
+}
+.follow{
+    margin: 0px 100px 0px 0px;
+}
+i{
+    color:#B9BBC2;
+    margin: 0px 15px 30px 0px;
+}
+
+.gogolook i{
+    margin: 0px 0px 0px 700px;
+}
+
+
+
+/*#endregion footer*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
