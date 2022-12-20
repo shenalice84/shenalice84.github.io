@@ -1,0 +1,85 @@
+
+.game-content{
+    text-align: center;
+    width: 500px;
+    border: 3px solid #F4DEC6;
+    margin: 0px auto;
+}
+header{
+    margin: 10px;
+}
+header h1{
+    font-size: 32px;
+    font-family: Chalkduster, fantasy;
+}
+header p{
+    margin: 20px;
+}
+
+header img{
+    width: 240px;
+}
+section{
+    margin: 10px;
+}
+section p{
+    margin: 10px;
+    font-size: 18px;
+    font-family:Chalkduster, fantasy;
+}
+section span{
+    color:brown;
+    font-size: 28px;
+}
+input{
+    width: 200px;
+    height:30px;
+    font-size: 32px;
+    text-align: center;
+}
+/* -------按鈕區--------- */
+.btn-function{
+    margin: 50px 0px 0px 0px;
+    display:flex;
+    justify-content: space-between;
+    width: 340px;
+    margin: auto;
+}
+.btn-function button{
+    width: 100px;
+    height: 50px;
+    border-radius: 15px;
+    background-color:#F4DEC6;
+    font-family: Chalkduster, fantasy;
+    font-size: 25px;
+    transition: .5s;
+
+}
+.btn-function button:hover{
+    background-color: rgb(202, 157, 122);
+}
+.btn-num{
+    display: flex;
+    justify-content: center;
+    margin: 0px auto;
+    flex-wrap: wrap;
+    width: 360px;
+}
+.number{
+    width: 100px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 20%;
+    font-size: 35px;
+    font-family: Chalkduster, fantasy;
+    background-color:#F6E7C4;
+    transition: .5s;
+}
+
+.number:hover{
+    background-color: rgb(202, 157, 122);
+}
+
+
+
+

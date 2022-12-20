@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+
+        .wrap {
+            max-width: 100%;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .col {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            /* border: 1px solid red; */
+            margin: 10px 0px;
+        }
+
+        .pic {
+            width: 50%;
+            margin: 10px;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .item {
+            width: 50%;
+            margin-bottom: 15px;
+        }
+
+        /* and前後要空格，不然會讀不出來 */
+        @media screen and (min-width:768px) {
+            .col {
+                width: 33.33333%;
+                display: block;  
+            }
+
+            .pic {
+                margin: auto;
+                height: 50%;
+            }
+
+            .item {
+                margin: auto;
+                text-align: center;
+                height: 50%;
+                width: fit-content;
+            }
+        }
+
+        @media screen and (min-width:1024px) {
+            .col {
+                width: 25%; 
+                position: relative;
+                padding: 10px;
+            }
+            .col .pic{
+                width: 100%;
+                vertical-align: auto;
+            }
+
+            .col:nth-child(n+3) .pic{
+                opacity: .5;
+                
+            }
+            .col:nth-child(n+3) .item{
+                position:absolute;
+                top: 0;
+                display: flex;
+                align-items: center;
+                height: 100%;
+                
+                
+            }
+            .col:nth-child(-n+2) {
+                display: flex;
+                width: 50%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="col">
+            <div class="pic"><img src="https://picsum.photos/300/200/?random=1"></div>
+            <div class="item">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, recusandae? Nisi numquam quia, nam
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus,  </p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="pic"><img src="https://picsum.photos/300/200/?random=2"></div>
+            <div class="item">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, recusandae? Nisi numquam quia, namLorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, recusandae? Nisi numquam quia,  </p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="pic"><img src="https://picsum.photos/300/200/?random=3"></div>
+            <div class="item">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, recusandae? Nisi numquam quia, namLorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, recusandae? Nisi numquam quia,  </p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="pic"><img src="https://picsum.photos/300/200/?random=4"></div>
+            <div class="item">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, recusandae? Nisi numquam quia, namLorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, recusandae? Nisi numquam quia,</p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="pic"><img src="https://picsum.photos/300/200/?random=5"></div>
+            <div class="item">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, recusandae? Nisi numquam quia, namLorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, recusandae? Nisi numquam quia,  </p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="pic"><img src="https://picsum.photos/300/200/?random=6"></div>
+            <div class="item">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, recusandae? Nisi numquam quia, namLorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, recusandae? Nisi numquam quia, </p>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
