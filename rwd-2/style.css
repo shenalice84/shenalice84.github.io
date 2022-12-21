@@ -178,9 +178,6 @@ main img {
     .item {
         padding: 15px 0;
     }
-    .main-header {
-        padding: 0px;
-    }
 
     .hb {
         display: none;
@@ -192,6 +189,7 @@ main img {
 
     .drop-down-menu {
         display: flex;
+        margin: 0px 60px;
     }
 
     .main-nav a {
