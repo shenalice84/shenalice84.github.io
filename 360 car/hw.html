@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+            .container{
+                text-align: center;
+
+            }
+            h1{
+                margin: 30px 0px 200px;
+                font-size: 35px;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            .content{
+                display: flex;
+                justify-content: center;
+            }
+            button{
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+            }
+            .color{
+                margin: 50px;
+            }
+            .white{
+                background-color: aliceblue;
+            }
+            .gray{
+                background-color: gray;
+            }
+
+        </style>
+
+</head>
+
+<body>
+    <section class="container">
+        <h1>Altis 賞車</h1>
+        <div class="content">
+            <button class="left"><i class="fa-solid fa-rotate-left"></i></button>
+            <div class="car-pic">
+                <img src="" alt="">
+            </div>
+            <button class="right"><i class="fa-solid fa-arrow-rotate-right"></i></button>
+        </div>
+
+
+        <!-- <div class="color">
+
+
+            <button class="gray">gray</button>
+            <button class="white">white</button>
+        </div> -->
+
+    </section>
+
+    <script>
+        let carArray =[];
+        // let carArryWhite=[];
+        let bntRight = document.querySelector('.right');
+        let bntLeft = document.querySelector('.left');
+        let img = document.querySelector('.car-pic img')
+        let carIndex=0;
+
+        window.onload = function(){
+            genCarPicGray();
+            console.log(carArray)
+            let carpic= document.querySelector('.car-pic');
+
+            img.src = carArray[carIndex];
+
+            bntRight.addEventListener('click',function(){
+            if(carIndex===59){
+                carIndex =0;
+            }
+            else{
+                carIndex++;
+            }
+            
+            console.log(carIndex)
+            img.src = carArray[carIndex]
+        })
+        bntLeft.addEventListener('click',function(){
+            if(carIndex===0){
+                carIndex =59;
+            }
+            else{
+                carIndex--;
+            }
+            
+            console.log(carIndex)
+            img.src = carArray[carIndex]
+        })
+
+
+
+        }
+        //左 當我按按紐的時候，要可以換到下一張圖片
+        //右 按按紐的時候，可以換到上一張
+
+        //建一個方法將所有圖片放入在陣列裡面
+        function genCarPicGray (){
+            for(i=1;i<61;i++){
+                let carPic =`./Altis/360EXT_1_18_${i}.png`;
+                carArray.push(carPic)
+            }
+        }
+
+
+        // function genCarPicGray(){
+        //     for(i=1;i<61;i++){
+        //         let carpicWhite=`./Altis/360EXT_1_23_${i}.png`;
+        //         carArryWhite.push(carpicWhite)
+        //     }
+        // }
+    </script>
+</body>
+
+</html>
