@@ -13,7 +13,6 @@
         <style>
             .container{
                 text-align: center;
-
             }
             h1{
                 margin: 30px 0px 200px;
@@ -23,22 +22,18 @@
             .content{
                 display: flex;
                 justify-content: center;
+                margin: auto;
             }
             button{
                 width: 60px;
                 height: 60px;
                 border-radius: 50%;
+                border-style: none;
             }
-            .color{
-                margin: 50px;
+            .car-pic img{
+                width: 400px;
             }
-            .white{
-                background-color: aliceblue;
-            }
-        
-
         </style>
-
 </head>
 
 <body>
@@ -51,7 +46,6 @@
             </div>
             <button class="right"><i class="fa-solid fa-arrow-right"></i></button>
         </div>
-
     </section>
 
     <script>
@@ -69,24 +63,22 @@
             img.src = carArray[carIndex];
 
             bntRight.addEventListener('click',function(){
+                if(carIndex===0){
+                carIndex =59;
+            }
+            else{
+                carIndex--;
+            }
+            console.log(carIndex)
+            img.src = carArray[carIndex]
+        })
+        bntLeft.addEventListener('click',function(){
             if(carIndex===59){
                 carIndex =0;
             }
             else{
                 carIndex++;
             }
-            
-            console.log(carIndex)
-            img.src = carArray[carIndex]
-        })
-        bntLeft.addEventListener('click',function(){
-            if(carIndex===0){
-                carIndex =59;
-            }
-            else{
-                carIndex--;
-            }
-            
             console.log(carIndex)
             img.src = carArray[carIndex]
         })
@@ -104,12 +96,6 @@
                 carArray.push(carPic)
             }
         }
-        // function genCarPicGray(){
-        //     for(i=1;i<61;i++){
-        //         let carpicWhite=`./Altis/360EXT_1_23_${i}.png`;
-        //         carArryWhite.push(carpicWhite)
-        //     }
-        // }
     </script>
 </body>
 
