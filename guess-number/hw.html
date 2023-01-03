@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+        h1{
+            margin: 20px;
+            font-size: 30px;
+        }
+        .game-content{
+            text-align: center;
+            margin: 100px;
+        }
+        .game-record{
+            width: 300px;
+            height: 200px;
+            border: 1px solid #000;
+            margin: 20px auto;
+        }
+        .game-control button{
+            margin: 0px 10px;
+            padding: 5px 10px;
+        }
+        p{
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game">
+        <div class="game-content">
+            <h1>Guess Number !</h1>
+            <div class="game-control">
+                <button class="start">Start</button>
+                <button class="again">Try again</button>
+                <button class="answer">Answer</button>
+            </div>
+            <div class="game-record"></div>
+            <div class="game-guess">
+                <p>Please enter four different numbers !</p>
+                <input type="text" name="" id="" maxlength="4">
+                <button class="guess">Guess</button>
+            </div>
+        </div>
+    </div>
+
+
+        <script>
+            const startBtn = document.querySelector('.start')
+            const againBtn = document.querySelector('.again')
+            const answerBtn = document.querySelector('.answer')
+            const record = document.querySelector('.game-record')
+            const guessBtn = document.querySelector('.guess')
+
+            let answer = getAnswer()
+
+            //按鈕們初始設定
+            startBtn.disabled = false;
+            againBtn.disabled = true;
+            answerBtn.disabled = true;
+            guessBtn.disabled = true;
+
+
+
+
+
+
+            startBtn.addEventListener('click',function(){
+                getAnswer();
+
+            })
+
+            startBtn.onclick = function () {
+            getAnswer();
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            //產生亂數方法
+            function getAnswer(){
+                return Math.floor(Math.random()*10000+1);
+            }
+            
+        </script>
+
+
+
+
+</body>
+</html>

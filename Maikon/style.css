@@ -29,6 +29,9 @@ body{
 .main-nav a:hover{
     border-bottom:1px solid #5D6678;
 }
+.main-nav li:first-child a{
+    border-bottom:1px solid #5D6678;
+}
 #menu-control {
     /* 讓checkbox隱藏起來 */
     display: none;
@@ -42,7 +45,7 @@ div h2{
 div p{
     color:#5D6678 ;
     font-size: 14px;
-    line-height: 30px;
+    line-height: 25px;
 }
 .green-btn{
     height: 40px;
@@ -134,11 +137,17 @@ div p{
     font-size: 30px;
     margin: 15px 0px;
 }
-
+.service-row p{
+    margin:20px 0px;
+}
 .service-row a{
     text-decoration: none;
     color: #000;
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.service-row a:hover{
+    color: #1FDE82;
 }
 /* #endregion-------------service--------------- */
 
@@ -155,49 +164,49 @@ div p{
 
 /* #region----------why-choose-us------------- */
 .why-choose-us{
-    max-width: none;
     background-color: #2570FF;
     padding: 50px 0px;
 }
-.data div div{
+.-container .data div div{
     background-color: #3F81FF;
     border-radius: 8px;
     text-align: center;
-    padding: 30px;
-    margin: 20px 40px;
+    padding: 30px 0px;
+    margin:10px;
     font-size: 35px;
     font-weight: bold;
 }
 .data div p,span{
     color: #FFFFFF;
 }
-.text h2,.text p{
+.why-choose-us-content-row h2,.why-choose-us-content-row p{
     color:#ffff;
 }
 .why-choose-us-button button{
     margin: 30px 0px 0px;
     color: #ffff;
 }
-.text,.why-choose-us-button{
+.why-choose-us-button{
     margin: 0px 0px 0px 20px;
 }
 
 /* #endregion----------why-choose-us--------------- */
 
 /* #region--------------step------------------- */
-.step-content{
+.step-content-container{
     margin: 20px;
 }
-.step-content div img:first-child{
+.step-content-container div:first-child img{
     width: 80px;
     box-shadow: 0px 0px 10px 10px #d3f5e7;
     border-radius: 50px;
 }
-.step-content div h3{
+.step-content-container div h3{
     margin: 20px 0px 10px;
+    font-size: 20px;
 }
-.step-content div img:last-child{
-    margin: 40px 0px;
+.step-content-container div img:last-child{
+    margin: 40px 20px;
 }
 /* #endregion-----------step--------------------- */
 
@@ -208,32 +217,68 @@ div p{
 .project-content button{
     margin: 10px 0px 35px;
 }
-.project-pic img{
+.project-pic-row img{
     width: 100%;
-    margin: 20px 0px;
+    /* margin: 20px 0px; */
     box-shadow: 0px 0px 10px 10px #F1F4F8;
-    
+    border-radius: 15px;
+}
+.project-pic-item{
+    position: relative;
+}
+.project-text{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: #23DF84;
+    color: #fff;
+    opacity: 0;
+    transition: .8s;
+    border-radius: 15px;
+}
+.project-text p{
+    font-size: 35px;
+    color: #fff;
+    margin: 40px 20px;
+    line-height: 50px;
+}
+.project-text a{
+    text-decoration: none;
+    margin: 20px;
+    color: #FFFFFF;
+    font-size: 20px;
+}
+.project-text a:hover{
+    color: #5D6678;
+}
+.project-text:hover{
+    opacity: 1;
 }
 /* #endregion-------------------project----------------- */
 
 /* #region--------------input------------------- */
-.input-data-content img{
+.input-data-content-row img{
     margin: 20px;
     width: 75%;
 }
 
-.input-data-content>div{
+.input-data-content-row > div,.input-data-subscribe{
     margin: 20px;
     box-shadow: 0px 0px 10px 15px #f6f8f9 ;
     padding: 20px;
 }
-.input-data-content div input{
+.input-data-content-row div input,.input-data-subscribe input{
     width: 100%;
     height: 40px;
-    margin: 0px 0px 20px;
     border: 1px solid #DCDFE5;
+    
 }
-.input-data-content div textarea{
+.input-data-content-row div input{
+    margin: 0px 0px 10px;
+}
+.input-data-content-row div textarea{
     width: 100%;
     border: 1px solid #DCDFE5;
     resize: vertical;
@@ -255,48 +300,55 @@ div p{
 /* #endregion--------------input-------------------- */
 
 /* #region--------------footer------------------- */
-.maikon-source{
+.maikon-source-container{
     margin: 0px 20px;
 }
-.maikon-source-title{
+.maikon-source-content-row li:first-child{
     display: flex;
     flex-direction: column;
 }
-.maikon-source-title img{
+.maikon-source-content-row li:first-child img{
     width: 158px;
     margin: 50px 0px 20px;
 }
-.maikon-source-title a{
+.maikon-source-content-row li a{
     text-decoration: none;
-    color:#1D273B ;
+    color:#5D6678;
     font-size: 14px;
-    margin: 0px 0px 10px;
 }
-.maikon-source-content h4{
+.maikon-source-content-row h4+ul a:hover{
+    color: #1FDE82;
+}
+.maikon-source-content-row h4{
     font-size: 30px;
     margin: 30px 0px 0px;
 }
 
-.maikon-source-content a{
-    text-decoration: none;
-    color: #5D6678;
-}
-
-.maikon-source-content ul li{
+.maikon-source-content-row li{
     margin: 10px 0px;
 }
-.maikon-source-content ul li:first-child{
-    margin: 30px 0px 0px;
-}
-.maikon-source-content li i{
+.maikon-source-content-row li i{
     color: #D2D6DE;
     border: 1px solid #D2D6DE;
     border-radius: 50%;
     padding: 10px;
     margin: 30px 2px;
 }
+.maikon-source-content-row li i:hover{
+    background-color: #1FDE82;
+    color: #FFFFFF;
+    transition: .5s;
+}
 .maikon-copyright{
     text-align: center;
+}
+.maikon-copyright span a{
+    text-decoration: none; 
+    color: #1FDE82;
+}
+.maikon-copyright span a:hover{
+    color: #5D6678;
+    transition: .5s;
 }
 .maikon-privacy{
     text-align: center;
@@ -308,12 +360,13 @@ color: #5D6678;
 font-size: 12px;
 margin: 20px;
 }
+.maikon-privacy a:hover{
+    color: #1FDE82;
+    transition: .5s;
+}
 /* #endregion-----------------------footer-------------------- */
 
-
-
-
-/* ------------------------------pc--------------------------------------- */
+/*#region ---------------phone--------------------------------------- */
 @media screen and (width<1024px){
     .hb {
         width: 40px;
@@ -362,14 +415,39 @@ margin: 20px;
         justify-content: flex-end;
         margin: 20px;
     }
-}
-@media screen and (width>=1024px) {
+    .input-data-content-row div input,.input-data-subscribe input{
+        margin: 0px 0px 20px;
+    }
+    .project-pic-row img{
+        margin: 20px 0px;
+    }
+    .project-text {
+        margin: 15px;
+    }
+    .project-pic img{
+        height: 300px;
+        object-fit: cover;
+    }
 
+}
+/* #endregion-------------phone-------------------------- */
+
+/*#region -----------------pc--------------------------------------- */
+@media screen and (width>=1024px) {
+    .logo{
+        flex-grow: 1;
+    }
+    .main-nav{
+        margin: 0px 60px;
+    }
     .main-nav ul{
         display: flex;
     }
     .main-nav label{
         display: none;
+    }
+    .main-nav a{
+        margin: 5px;
     }
     .success-row h2{
         font-size: 60px;
@@ -387,11 +465,77 @@ margin: 20px;
     .service-row{
         justify-content: center;
     }
- 
+    .data div div{
+        width: 200px;
+    }
+    .why-choose-us-data-row{
+        justify-content: center;
+    }
+    .contact-container .contact-pic {
+      text-align: center;
+    }
+    .step-content-container div div{
+        width: 450px;
+    }
+    [class*='step-content']{
+        justify-content: center;
+    }
+    .step-content-container div:nth-child(even){
+        flex-direction: row-reverse;
+    }
+    .step-content-container> div>div{
+        margin: 70px;
+    }
+    .project-content{
+        position: relative;
+    }
+    .project-content button{
+        position: absolute;
+        right: 60px;
+        top: -5px;
+    }
+    .project-content{
+        width: 960px;
+        margin: auto;
+    }
+    .project-pic-row {
+        justify-content: center;
+    }
+    .project-content h2{
+        margin: 50px 60px;
+    }
+    .project{
+        background-color: #F9FBFF;
+        padding: 40px 0px;
+    }
+    .project-text{
+        margin: 0px 15px;
+    }
+    .input-data-content-row img{
+        width: 40% ;
+    }
+    .input-data-subscribe{
+        box-shadow: none;
+        text-align: center;
+        width: 500px;
+        margin: auto;
+    }
+    .input-data-subscribe-btn{
+        box-shadow: 0px 0px 15px 10px#F7F9FB;
+    }
+    ul{
+        justify-content: center;
+    }
+    .maikon-source-content-row input{
+        margin: 0px 0px;
+    }
+    .copyPrivacy{
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 30px;
+    }
 }
-
-
-
+/*#endregion ---------------pc--------------------------------------- */
 
 
 
