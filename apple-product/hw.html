@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="/grid.css">
     <style>
         *{
-            /* outline: 1px solid #000; */
             font-family: system-ui;
         }
         nav{
@@ -80,7 +79,6 @@
         .storage_btn:hover{
             background-color:rgb(246, 228, 208);
         }
-
     </style>
 </head>
 <body>
@@ -107,7 +105,6 @@
             </div>
         </div>
     </main>
-
     <script>
         const ipad_List = [
             { type:"ipadair",id:"A01",colorBtn:"./apple-product_img/ipad-air-btn-space-gray.png",color:"Space Gray",storage:"64GB",price:19900,picture:"./apple-product_img/ipad-space-gray.jpeg"},
@@ -146,7 +143,6 @@
             { type:"macbook",id:"C08",colorBtn:"./apple-product_img/macbook-air-btn-silver.jpeg",color:"Silver",storage:"512GB",price:36900,picture:"./apple-product_img/mac-silver.jpeg"},
             { type:"macbook",id:"C09",colorBtn:"./apple-product_img/macbook-air-btn-silver.jpeg",color:"Silver",storage:"1TB",price:42900,picture:"./apple-product_img/mac-silver.jpeg"}
         ] 
-        
         // -----------------dom--------------------------
         let iphoneBtn = document.querySelector('.iphone');
         let ipadBtn = document.querySelector('.ipad')
@@ -183,7 +179,6 @@
             create_Color_Info(color_result,ipad_List)
             create_Storage_Array(ipad_List)
             create_Storage_Info(storage_result,ipad_List)
-          
         })
         macBtn.addEventListener('click',function(){
             apple_price.innerHTML=''
@@ -192,7 +187,6 @@
             create_Color_Info(color_result,mac_List)
             create_Storage_Array(mac_List)
             create_Storage_Info(storage_result,mac_List)
-         
         })
 
         //-----------------function------------------
@@ -266,6 +260,5 @@
             }) 
         }
     </script>
-
 </body>
 </html>
