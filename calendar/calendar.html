@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calendar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./reset.css">
+</head>
+<style>
+    .title {
+        margin: 40px auto;
+        width: 500px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 45px;
+        font-family: cursive;
+    }
+
+    .table {
+        font-family: cursive;
+        margin: auto;
+        width: 960px;
+        height: 80vh;
+    }
+
+    th {
+        font-size: 20px;
+        border-bottom: 1px solid rgb(217, 214, 214);
+    }
+</style>
+<body>
+    <section class="calendar">
+        <div class="title">
+            <button onclick="previousMonth()" class="btn"><i class="fa-solid fa-angle-left"></i></button>
+            <h1 class="year-month"></h1>
+            <button onclick="nextMonth()" class="btn"><i class="fa-solid fa-angle-right"></i></button>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Sun</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 動態渲染日期 -->
+            </tbody>
+        </table>
+        <!--------------------------------------------- Modal --------------------------------------------->
+        <!-- 新增行程 modal -->
+        
+        <div id="add-modal" class="modal fade" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">新增</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input id="add-date" type="text">
+                        <input id="add-value" type="text">
+                    </div>
+                    <div class="modal-footer">
+                        <button onclick="addTodoItem()" type="button" class="btn btn-primary">新增</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+        <!---------------------------------------------------- Modal --------------------------------------------------->
+        <!-- 編輯 modal -->
+
+        <div id="edit-modal" class="modal fade" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">編輯</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input id="edit-date" type="text">
+                        <input id="edit-value" type="text">
+                    </div>
+                    <div class="modal-footer">
+                        <button onclick="deleteTodoItem()" type="button" class="btn btn-danger">刪除</button>
+                        <button onclick="editTodoItem()" type="button" class="btn btn-primary">修改</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
+
+    <script>
+        //宣告
+        const today = new Date() //今天
+        let month = today.getMonth() //月份 1月是0
+        let year = today.getFullYear() //年
+
+        //DOM
+        const yearMonthText = document.querySelector('.year-month')
+        const dateArea = document.querySelector('tbody')
+
+        //--------------------------------------------function--------------------------------------------------
+        function renderDate() {
+            dateArea.innerHTML = ''
+            yearMonthText.innerText = `${year} . ${month + 1}`
+
+            //這個月第一天禮拜幾?
+            let firstDay = new Date(year, month, 1).getDay()
+            //這個月有幾天?
+            let dayOfMonth = new Date(year, month + 1, 0).getDate()
+            let rows = Math.ceil((dayOfMonth + firstDay) / 7)
+            let day = 1
+
+            for (let row = 0; row < rows; row++) {
+                let tr = document.createElement('tr')
+                for (let col = 0; col < 7; col++) {
+                    let td = document.createElement('td')
+                    if (row == 0 && col < firstDay) {
+                        //上個月
+                        td.innerText = ''
+                    }
+                    else {
+                        if (day <= dayOfMonth) {
+                            //這個月
+                            td.innerText = day
+                        }
+                        else {
+                            //下個月
+                            td.innerText = ''
+                        }
+                        day++
+                    }
+                    tr.appendChild(td)
+                }
+                dateArea.appendChild(tr)
+            }
+        }
+
+        function nextMonth() {
+            month++
+            if (month == 12) {
+                year++
+                month = 0
+            }
+            renderDate()
+        }
+        function previousMonth() {
+            month--
+            if (month == -1) {
+                year--
+                month = 11
+            }
+            renderDate()
+        }
+
+
+        function add_Todo(){
+            
+        }
+
+
+
+
+        //---------------------------------window.onload----------------------------------------
+        window.onload = function () {
+            renderDate()
+        }
+    </script>
+</body>
+
+</html>
