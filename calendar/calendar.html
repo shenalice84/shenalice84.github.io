@@ -187,11 +187,12 @@
                 for (let col = 0; col < 7; col++) {
                     let td = document.createElement('td')
 
-                    
+
 
                     if (row == 0 && col < firstDay) {
                         //上個月
                         td.innerText = ''
+                        td.style.backgroundColor='transparent'   
                     }
                     else {
                         if (day <= dayOfMonth) {
@@ -231,6 +232,7 @@
                         else {
                             //下個月
                             td.innerText = ''
+                            td.style.backgroundColor='transparent' 
                         }
                         day++
                     }
