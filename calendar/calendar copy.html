@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calendar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./reset.css">
+</head>
+<style>
+    .calendar {
+        width: 560px;
+        margin: auto;
+    }
+
+    .title {
+        margin: 30px auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 30px;
+        font-family: cursive;
+        color: burlywood;
+    }
+
+    i {
+        font-size: 14px;
+    }
+
+    .table {
+        font-family: cursive;
+    }
+
+    th {
+        width: 80px;
+        font-size: 20px;
+        border-bottom: 1px solid rgb(217, 214, 214);
+        font-weight: 900;
+    }
+
+    td {
+        height: 80px;
+        /* cursor: pointer; */
+        border-radius: 10px;
+    }
+
+    td:hover {
+        background-color: beige;
+    }
+
+    .modal {
+        font-family: cursive;
+    }
+
+    .modal-header input {
+        font-size: 28px;
+        border-style: none;
+        background-color: transparent;
+    }
+
+    .modal-header {
+        background-color: rgb(248, 243, 237)
+    }
+
+    .modal-body input {
+        border: 0;
+        /* border-bottom: 2px solid rgb(213, 213, 206); */
+        font-family: Baskerville;
+        width: 100%;
+        height: 25px;
+        font-size: 20px;
+        outline: 0;
+    }
+
+    .modal-footer button:hover {
+        color: wheat;
+    }
+
+    li {
+        font-family: Baskerville;
+        background-color: antiquewhite;
+        border-radius: 15px;
+        margin: 5px 0px 0px;
+        width: 60px;
+        overflow: hidden;
+        padding: 0px 5px;
+        cursor: pointer;
+        height: 16px;
+    }
+</style>
+
+<body>
+    <section class="calendar">
+        <div class="title">
+            <button onclick="previousMonth()" class="btn"><i class="fa-solid fa-angle-left"></i></button>
+            <h1 class="year-month"></h1>
+            <button onclick="nextMonth()" class="btn"><i class="fa-solid fa-angle-right"></i></button>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Sun</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 動態渲染日期 -->
+            </tbody>
+        </table>
+        <!--------------------------------------------- Modal --------------------------------------------->
+        <!-- 新增行程Modal -->
+        <div id="add-modal" class="modal fade" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <!-- <h5 class="modal-title">新增</h5> -->
+                        <input disabled id="add-date" type="text">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- <input id="add-date" type="text"> -->
+                        <input id="add-value" type="text" placeholder="please input your schedule">
+                    </div>
+                    <div class="modal-footer">
+                        <button onclick="addTodoItem()" type="button" class="btn"><i
+                                class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 編輯行程Modal -->
+        <div id="edit-modal" class="modal fade" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <!-- <h5 class="modal-title">編輯</h5> -->
+                        <input id="edit-date" type="text">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- <input id="edit-date" type="text"> -->
+                        <input id="edit-value" type="text">
+                    </div>
+                    <div class="modal-footer">
+                        <button onclick="deleteTodoItem()" type="button" class="btn"><i
+                                class="fa-solid fa-trash-can"></i></button>
+                        <button onclick="editTodoItem()" type="button" class="btn"><i
+                                class="fa-solid fa-pen"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+
+        <script>
+            //宣告
+            const monthName = ["January", "Febrary", "March", "April", "May", "June", "July", "Auguest", "September", "October", "November", "December"];
+            const today = new Date() //今天
+            let year = today.getFullYear() //年
+            let month = today.getMonth() //月份 1月是0
+            let Today = today.getDate()
+            console.log(Today)
+            let currentIndex
+            //DOM
+            const yearMonthText = document.querySelector('.year-month')
+            const dateArea = document.querySelector('tbody')
+
+            const addModal = document.querySelector('#add-modal')
+            const editModal = document.querySelector('#edit-modal')
+
+            const addDateInput = document.querySelector('#add-date')
+            const addValueInput = document.querySelector('#add-value')
+            const editDateInput = document.querySelector('#edit-date')
+            const editValueInput = document.querySelector('#edit-value')
+        
+
+            //function
+            function renderDate() {
+                dateArea.innerHTML = ''
+                addValueInput.value = ''
+
+                yearMonthText.innerText = `${year} . ${monthName[month]}`
+
+                //這個月第一天禮拜幾?
+                let firstDay = new Date(year, month, 1).getDay()
+                //這個月有幾天?
+                let dayOfMonth = new Date(year, month + 1, 0).getDate()
+
+                let rows = Math.ceil((dayOfMonth + firstDay) / 7)
+                let day = 1
+
+                for (let row = 0; row < rows; row++) {
+                    let tr = document.createElement('tr')
+                    for (let col = 0; col < 7; col++) {
+                        let td = document.createElement('td')
+
+                        if (row == 0 && col < firstDay) {
+                            //上個月
+                            td.innerText = ''
+                        }
+                        else {
+                            if (day <= dayOfMonth ) {
+                                //這個月
+                                let d = day
+                                td.innerText = day
+                                // if (td.innerText == Today) {   每月14號都會mark起來
+                                //     td.style.color = 'burlywood'
+                                // }
+                                //window.localStorage property of the window 
+                                //getitem() pass a key name,will return that key's value
+
+                                debugger
+                                if (localStorage.getItem(`${year}.${month + 1}.${day}`) != null) {
+                                    let ul = document.createElement('ul')
+
+                                    let todoList = JSON.parse(localStorage.getItem(`${year}.${month + 1}.${day}`))
+                                    todoList.forEach((item, index) => {
+                                        let li = document.createElement('li')
+                                        li.innerText = item.title
+                                        // if (td.innerText == Today) {
+                                        //     li.style.color = 'black'
+                                        // }
+                                        li.onclick = function (e) {
+                                            editDateInput.value = `${year}.${month + 1}.${d}`
+                                            editValueInput.value = item.title
+
+                                            currentIndex = index
+
+                                            bootstrap.Modal.getOrCreateInstance(editModal).show()
+                                            e.stopPropagation()
+                                        }
+
+                                        ul.appendChild(li)
+                                    })
+                                    td.appendChild(ul)
+                                }
+
+                                td.onclick = function () {
+                                    addDateInput.value = `${year}.${month + 1}.${d}`
+                                    bootstrap.Modal.getOrCreateInstance(addModal).show()
+                                }
+                            }
+                            else {
+                                //下個月
+                                td.innerText = ''
+                            }
+                            day++
+                        }
+                        tr.appendChild(td)
+                    }
+                    dateArea.appendChild(tr)
+                }
+            }
+
+            function nextMonth() {
+                month++
+                if (month == 12) {
+                    year++
+                    month = 0
+                }
+                renderDate()
+            }
+
+            function previousMonth() {
+                month--
+                if (month == -1) {
+                    year--
+                    month = 11
+                }
+                renderDate()
+            }
+
+            function addTodoItem() {
+                let date = addDateInput.value
+                let todoItem = addValueInput.value
+
+                let todoObj = {
+                    title: todoItem
+                }
+
+                let todoList = []
+
+                if (localStorage.getItem(date) == null) {
+                    todoList.push(todoObj)
+                } else {
+                    todoList = JSON.parse(localStorage.getItem(date))
+                    todoList.push(todoObj)
+                }
+
+                localStorage.setItem(date, JSON.stringify(todoList))
+
+                bootstrap.Modal.getOrCreateInstance(addModal).hide()
+
+                renderDate()
+            }
+
+            function editTodoItem() {
+                let date = editDateInput.value
+                let todoItem = editValueInput.value
+
+                let todoList = JSON.parse(localStorage.getItem(date))
+
+                todoList[currentIndex] = {
+                    title: todoItem
+                }
+
+                localStorage.setItem(date, JSON.stringify(todoList))
+
+                bootstrap.Modal.getOrCreateInstance(editModal).hide()
+
+                renderDate()
+            }
+
+            function deleteTodoItem() {
+                let date = editDateInput.value
+
+                let todoList = JSON.parse(localStorage.getItem(date))
+                todoList.splice(currentIndex, 1)
+
+                localStorage.setItem(date, JSON.stringify(todoList))
+
+                bootstrap.Modal.getOrCreateInstance(editModal).hide()
+
+                renderDate()
+            }
+
+            //window.onload
+            window.onload = function () {
+                renderDate()
+            }
+        </script>
+</body>
+
+</html>
