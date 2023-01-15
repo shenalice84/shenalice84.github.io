@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./reset.css">
+</head>
+<style>
+    .container {
+        padding: 0;
+        margin: 20px auto 0px;
+    }
+
+    [exercise-id] {
+        width: fit-content;
+        transition: 0.3s;
+        padding: 8px 5px;
+        border-radius: 8px;
+        border: 1px solid transparent;
+    }
+
+    [exercise-id].active {
+        border: 1px solid #000;
+        transition: 0s;
+    }
+
+    [times-id] {
+        width: fit-content;
+        transition: 0.3s;
+        padding: 8px 5px;
+        border-radius: 8px;
+    }
+
+    [times-id].active {
+        background-color:rgb(178, 173, 173);
+        color: #fff;
+        transition: 0s;
+    }
+
+    .row {
+        margin: 0px 0px 4px;
+        justify-content: space-around;
+        font-family: Arial Rounded MT Bold;
+    }
+
+    p {
+        font-size: 36px;
+        text-align: center;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial Rounded MT Bold;
+        margin: 10px 0px;
+    }
+
+    img {
+        width: 100%;
+        height: 400px;
+        border-radius: 15px;
+    }
+
+    .btn {
+        width: 350px;
+        margin: 10px 0px;
+        font-family: Arial Rounded MT Bold;
+        border-radius: 10px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div exercise-id="1" class="col-1">Press-Up</div>
+                    <div times-id="24" class="col-1">4 sets of 15 reps</div>
+                    <div exercise-id="3" class="col-1">Diamond Press-Ups</div>
+                </div>
+                <div class="row">
+                    <div exercise-id="2" class="col-1">Jumping Jack</div>
+                    <div times-id="25" class="col-1">15 mins</div>
+                    <div exercise-id="4" class="col-1">Bear Crawls</div>
+                </div>
+                <div class="row">
+                    <div exercise-id="5" class="col-1">Shadow boxing</div>
+                    <div times-id="26" class="col-1">20 mins</div>
+                    <div exercise-id="7" class="col-1">Spiderman Press-Up</div>
+                </div>
+                <div class="row">
+                    <div exercise-id="6" class="col-1">Plank</div>
+                    <div times-id="42" class="col-1">2 sets of 20 reps</div>
+                    <div exercise-id="8" class="col-1">Pike Push-Up</div>
+                </div>
+                <div class="row">
+                    <div exercise-id="9" class="col-1">Crunch</div>
+                    <div times-id="28" class="col-1">25 mins</div>
+                    <div exercise-id="11" class="col-1">Deadbug</div>
+                </div>
+                <div class="row">
+                    <div exercise-id="10" class="col-1">Skater Hop</div>
+                    <div times-id="29" class="col-1">3 sets of 15 reps</div>
+                    <div exercise-id="12" class="col-1">High Knee Run</div>
+                </div>
+                <div class="row">
+                    <div exercise-id="13" class="col-1">Jumping Lunges</div>
+                    <div times-id="30" class="col-1">3 sets of 20 reps</div>
+                    <div exercise-id="15" class="col-1">Burpees</div>
+                </div>
+                <div class="row">
+                    <div exercise-id="14" class="col-1">Frog Hop</div>
+                    <div times-id="31" class="col-1">4 sets of 25 reps</div>
+                    <div exercise-id="16" class="col-1">Bench Dips</div>
+                </div>
+                <div class="row">
+                    <div exercise-id="17" class="col-1">Bodyweight Glute Bridge</div>
+                    <div times-id="32" class="col-1">3 sets of 25 reps</div>
+                    <div times-id="27" class="col-1">10 mins</div>
+                    
+                </div>
+                <div class="row">
+                    <div times-id="33" class="col-1">2 sets of 15 reps</div>
+                    <div exercise-id="19" class="col-1">Skipping</div>
+                    <div times-id="34" class="col-1">2 sets of 25 reps</div>
+                </div>
+                <div class="row">
+                    <div exercise-id="20" class="col-1">Lower Back Curl</div>
+                    <div times-id="35" class="col-1">5 mins</div>
+                    <div exercise-id="21" class="col-1">Side Plank</div>
+                </div>
+                <div class="row">
+                    <div times-id="36" class="col-1">30 mins</div>
+                    <div exercise-id="22" class="col-1">Mountain Climber</div>
+                    <div times-id="37" class="col-1">4 sets of 20 reps</div>
+                </div>
+                <div class="row">
+                    <div times-id="38" class="col-1">2 sets of 20 reps</div>
+                    <div exercise-id="18" class="col-1">Duck Walk</div>
+                    <div times-id="39" class="col-1">5mins</div>
+                    <div times-id="43" class="col-1">5 sets of 15 reps</div>
+                </div>
+                <div class="row">
+                    <div times-id="40" class="col-1">10 mins</div>
+                    <div times-id="41" class="col-1">3 sets of 20 reps</div>
+                    <div times-id="44" class="col-1">5 sets of 20 reps</div>
+                </div>
+
+                <!-- button -->
+                
+            </div>
+            <div class="col">
+                <img id="pic" src="" alt="">
+                <p id="msg_exercise" class=""></p>
+                <p id="msg_times" class=""></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row">
+                <button class="btn btn-primary">Start</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+
+    <script>
+        //variable
+        let exercise_steps = 0      //剩餘要走幾步
+        let exercise_allSteps = 0 //全部的步數
+        let exercise_current = 0  //目前走到哪一格
+        let exercise_bricks;     //不重複宣告
+        let exercise_speed;      //速率，越大代表走越慢
+
+        let times_steps = 0      //剩餘要走幾步
+        let times_allSteps = 0 //全部的步數
+        let times_current = 0  //目前走到哪一格
+        let times_bricks;     //不重複宣告
+        let times_speed;      //速率，越大代表走越慢
+
+        //格子資料------------------------------------------------------------------
+        let ExerciseData = [
+            {
+                id: '1',
+                target: function () {
+                    return 'Press-Up'
+                },
+                pic: './pic/pushup.gif'
+            },
+            {
+                id: '2',
+                target: function () {
+                    return 'Jumping Jack'
+                },
+                pic: './pic/junping jack.gif'
+            },
+            {
+                id: '3',
+                target: function () {
+                    return 'Diamond Press-Ups'
+                },
+                pic: './pic/diamond-push-up.gif'
+            },
+            {
+                id: '4',
+                target: function () {
+                    return 'Bear Crawls'
+                },
+                pic: './pic/bear-crawl.gif'
+            },
+            {
+                id: '5',
+                target: function () {
+                    return 'Shadow boxing'
+                },
+                pic: './pic/shadowbox.gif'
+            },
+            {
+                id: '6',
+                target: function () {
+                    return 'Plank'
+                },
+                pic: './pic/plank.gif'
+            },
+            {
+                id: '7',
+                target: function () {
+                    return 'Spiderman Press-Up'
+                },
+                pic: './pic/Spiderman-press-ups.gif'
+            },
+            {
+                id: '8',
+                target: function () {
+                    return 'Pike Push-Up'
+                },
+                pic: './pic/pike-press-up.gif'
+            },
+            {
+                id: '9',
+                target: function () {
+                    return 'Crunch'
+                },
+                pic: './pic/crunches.gif'
+            },
+            {
+                id: '10',
+                target: function () {
+                    return 'Skater Hop'
+                },
+                pic: './pic/skater hop.gif'
+            },
+            {
+                id: '11',
+                target: function () {
+                    return 'Deadbug'
+                },
+                pic: './pic/deadbug.gif'
+            },
+            {
+                id: '12',
+                target: function () {
+                    return 'High Knee Run'
+                },
+                pic: './pic/high-knee-run.gif'
+            },
+            {
+                id: '13',
+                target: function () {
+                    return 'Jumping Lunges'
+                },
+                pic: './pic/jumping-lunge.gif'
+            },
+            {
+                id: '14',
+                target: function () {
+                    return 'Frog Hop'
+                },
+                pic: './pic/frog hop.gif'
+            },
+            {
+                id: '15',
+                target: function () {
+                    return 'Burpees'
+                },
+                pic: './pic/burpee.gif'
+            },
+            {
+                id: '16',
+                target: function () {
+                    return 'Bench Dips'
+                },
+                pic: './pic/Bench-dips.gif'
+            },
+            {
+                id: '17',
+                target: function () {
+                    return 'Bodyweight Glute Bridge'
+                },
+                pic: './pic/glute-bridge.gif'
+            },
+            {
+                id: '18',
+                target: function () {
+                    return 'Duck Walk'
+                },
+                pic: './pic/duck-walk.gif'
+            },
+            {
+                id: '19',
+                target: function () {
+                    return 'Skipping'
+                },
+                pic: './pic/skip.gif'
+            },
+            {
+                id: '20',
+                target: function () {
+                    return 'Lower Back Curl'
+                },
+                pic: './pic/lower back curl.gif'
+            },
+            {
+                id: '21',
+                target: function () {
+                    return 'Side Plank'
+                },
+                pic: './pic/sideplankk.gif'
+            },
+            {
+                id: '22',
+                target: function () {
+                    return 'Mountain Climber'
+                },
+                pic: './pic/mountainclimber.gif'
+            }
+        ]
+        let TimesData = [
+            {
+                id: '24',
+                target: function () {
+                    return '4 sets of 15 reps'
+                }
+            },
+            {
+                id: '25',
+                target: function () {
+                    return '15 mins'
+                }
+            },
+            {
+                id: '26',
+                target: function () {
+                    return '20 mins'
+                }
+            },
+            {
+                id: '27',
+                target: function () {
+                    return '10 mins'
+                }
+            },
+            {
+                id: '28',
+                target: function () {
+                    return '25 mins'
+                }
+            },
+            {
+                id: '29',
+                target: function () {
+                    return '3 sets of 15 reps'
+                }
+            },
+            {
+                id: '30',
+                target: function () {
+                    return '3 sets of 20 reps'
+                }
+            },
+            {
+                id: '31',
+                target: function () {
+                    return '4 sets of 25 reps'
+                }
+            },
+            {
+                id: '32',
+                target: function () {
+                    return '3 sets of 25 reps'
+                }
+            },
+            {
+                id: '33',
+                target: function () {
+                    return '2 sets of 15 reps'
+                }
+            },
+            {
+                id: '34',
+                target: function () {
+                    return '2 sets of 25 reps'
+                }
+            },
+            {
+                id: '35',
+                target: function () {
+                    return '5 mins'
+                }
+            },
+            {
+                id: '36',
+                target: function () {
+                    return '30 mins'
+                }
+            },
+            {
+                id: '37',
+                target: function () {
+                    return '4 sets of 20 reps'
+                }
+            },
+            {
+                id: '38',
+                target: function () {
+                    return '2 sets of 20 reps'
+                }
+            },
+            {
+                id: '39',
+                target: function () {
+                    return ' 5mins'
+                }
+            },
+            {
+                id: '40',
+                target: function () {
+                    return '2 sets of 20 reps'
+                }
+            },
+            {
+                id: '41',
+                target: function () {
+                    return '10 mins'
+                }
+            },
+            {
+                id: '42',
+                target: function () {
+                    return '3 sets of 20 reps'
+                }
+            },
+            {
+                id: '43',
+                target: function () {
+                    return '5 sets of 15 reps'
+                }
+            },
+            {
+                id: '44',
+                target: function () {
+                    return '5 sets of 20 reps'
+                }
+            }
+        ]
+
+        //dom-----------------------------------------------------------------------
+        const startBtn = document.querySelector('button')
+        const pic = document.querySelector('#pic')
+        const msgExercise = document.querySelector('#msg_exercise')
+        const msgTimes = document.querySelector('#msg_times')
+
+
+
+        //function----------------------------------------------------------------
+
+
+        //---------------exercise---------------------
+        function renderExercise() {
+            exercise_bricks = document.querySelectorAll('[exercise-id]')
+            exercise_bricks = Array.from(exercise_bricks).sort((a, b) => {          //a-b小於1會排在前面，大於1會排在後面
+                return a.getAttributeNode('exercise-id').value - b.getAttributeNode('exercise-id').value  //排序
+            })
+        }
+        function goExercise() {
+            let random = Math.floor(Math.random() * ExerciseData.length) + 1  //無條件捨去有可能是0，因此加1
+            exercise_speed = 100
+            console.log(random)
+            //還未開始走之前
+            //exercise_steps = random   //v1
+            exercise_steps = random + (2 * exercise_bricks.length)  //v2 多跑幾圈，再停留在target上     
+            exercise_allSteps = exercise_steps
+            //開始
+            turnAroundExercise()
+        }
+        function turnAroundExercise() {
+            //先把目前亮起來的關掉
+            exercise_bricks[exercise_current].classList.remove('active')
+            exercise_current++
+
+            if (exercise_current >= exercise_bricks.length) exercise_current = 0
+
+            exercise_bricks[exercise_current].classList.add('active')
+            exercise_steps--
+
+            if (exercise_steps > 0) {
+                //步數仍未走完
+                setTimeout(turnAroundExercise, exercise_speed) //數字越大跳一格花越久時間
+                //當剩下1/3會越走越慢
+                //if(speed < Math.floor((allSteps/3))) speed +=7 //變速效果
+            }
+            else {
+                //走完了
+                msgExercise.innerText = ExerciseData[exercise_current].target()
+                pic.src = ExerciseData[exercise_current].pic
+            }
+        }
+        //---------------------times---------------------
+
+        function renderTimes() {
+            times_bricks = document.querySelectorAll('[times-id]')
+            times_bricks = Array.from(times_bricks).sort((a, b) => {          //a-b小於1會排在前面，大於1會排在後面
+                return a.getAttributeNode('times-id').value - b.getAttributeNode('times-id').value  //排序
+            })
+        }
+        function goTimes() {
+            let random = Math.floor(Math.random() * TimesData.length) + 1  //無條件捨去有可能是0，因此加1
+            times_speed = 100
+            console.log(random)
+            //還未開始走之前
+            //times_steps = random   //v1
+            times_steps = random + (2 * times_bricks.length)  //v2 多跑幾圈，再停留在target上     
+            times_allSteps = times_steps
+            //開始
+            turnAroundTimes()
+        }
+        function turnAroundTimes() {
+            //先把目前亮起來的關掉
+            times_bricks[times_current].classList.remove('active')
+            times_current++
+
+            if (times_current >= times_bricks.length) times_current = 0
+
+            times_bricks[times_current].classList.add('active')
+            times_steps--
+
+            if (times_steps > 0) {
+                //步數仍未走完
+                setTimeout(turnAroundTimes, times_speed) //數字越大跳一格花越久時間
+                //當剩下1/3會越走越慢
+                //if(speed < Math.floor((allSteps/3))) speed +=7 //變速效果
+            }
+            else {
+                //走完了
+                msgTimes.innerText = TimesData[times_current].target()
+            }
+        }
+
+        //window.load----------------------------------------------------------------
+        window.onload = function () {
+            msgExercise.innerText = 'Are you ready !'
+            pic.src = './pic/fitness.webp'
+            renderExercise()
+            renderTimes()
+            startBtn.onclick = function () {
+                if (msgExercise.innerText == 'Are you ready !') {
+                    msgExercise.innerText = ''
+                }
+                goExercise()
+                goTimes()
+            }
+        }
+    </script>
+
+</body>
+
+</html>
