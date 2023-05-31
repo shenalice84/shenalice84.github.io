@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./reset.css"> -->
+    <style>
+        :root {
+            --dark: #374151;
+            --darker: #1F2937;
+            --darkest: #111827;
+            --gray: #6B7280;
+            --light: #EEE;
+            --pink: #EC4899;
+            --purple: #8B5Cf6;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Fira sans', sans-serif;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: var(--dark);
+            color: #fff;
+        }
+
+        header {
+            padding: 30px 20px;
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        header h1 {
+            font-size: 35px;
+            font-weight: 300;
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+
+        #new-task-form {
+            display: flex;
+        }
+
+        input,
+        button {
+            appearance: none;
+            border: none;
+            outline: none;
+            background: none;
+
+        }
+
+        #new-task-input {
+            flex: 1 1 0%;
+            background-color: var(--darker);
+            padding: 10px;
+            border-radius: 15px;
+            margin-right: 10px;
+            color: var(--light);
+            font-size: 20px;
+        }
+
+        #new-task-submit {
+            color: var(--pink);
+            font-size: 20px;
+            font-weight: 700;
+            /* background-image: linear-gradient(to right, var(--pink), var(--purple)); */
+            background-color: #EC4899;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+            transition: .4s;
+        }
+
+        #new-task-submit:hover {
+            opacity: 0.7;
+        }
+
+        #new-task-submit:active {
+            opacity: 0.5;
+        }
+
+        main {
+            flex: 1 1 0%;
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .task-list {
+            padding: 20px;
+        }
+
+        .task-list h2 {
+            font-size: 25px;
+            font-weight: 300;
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+
+        #tasks .task {
+            display: flex;
+            justify-content: space-between;
+            background-color: var(--darkest);
+            padding: 10px;
+            border-radius: 15px;
+            margin-bottom: 10px;
+        }
+
+        #tasks .task .content {
+            flex: 1 1 0%;
+        }
+
+        #tasks .task .content .text {
+            color: var(--light);
+            font-size: 15px;
+            width: 100%;
+            display: block;
+            transition: .4s;
+        }
+
+        #tasks .task .content .text:not(:read-only) {
+            color: var(--pink);
+        }
+
+        #tasks .task .action {
+            display: flex;
+            margin: 0 -10px;
+        }
+
+        #tasks .task .action button {
+            cursor: pointer;
+            margin: 0 10px;
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: .4s;
+        }
+
+        #tasks .task .action button:hover {
+            opacity: 0.7;
+        }
+
+        #tasks .task .action button:active {
+            opacity: 0.5;
+        }
+
+        .task .action .edit {
+            /* background-image: linear-gradient(to right, var(--pink), var(--purple)); */
+            background-color: #EC4899;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .task .action .delete {
+            color: crimson;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>To Do List</h1>
+        <form id="new-task-form">
+            <input type="text" id="new-task-input" placeholder="what do you want to do ?">
+            <input type="submit" id="new-task-submit" value="ADD">
+        </form>
+    </header>
+    <main>
+        <section class="task-list">
+            <h2>Tasks</h2>
+            <div id="tasks">
+                <!-- <div class="task">
+                    <div class="content">
+                        <input type="text" class="text" value="My task" readonly>
+                    </div>
+                    <div class="action">
+                        <button class="edit">Edit</button>
+                        <button class="delete">Delete</button>
+                    </div>
+                </div> -->
+
+
+            </div>
+        </section>
+    </main>
+
+
+    <script>
+        let form = document.querySelector("#new-task-form")
+        let input = document.querySelector("#new-task-input")
+        let list_el = document.querySelector("#tasks")
+
+        //先判斷有沒有儲存資料在localstorage
+
+        form.addEventListener('submit', function (event) {  //submit 當按下送出按鈕的時候
+            event.preventDefault(); //點擊submit，會觸發頁面reload()這個動作，因此在觸發的函式當中，我們必須加上 event.preventDefault()這個方法
+            //這個方法可以將允許被取消的事件，取消該事件的預設行為，但不會影響事件的傳遞，事件仍會繼續傳遞
+            let task = input.value
+            if (!task) {
+                alert("please input the task")
+                return
+            }
+            // else{
+            //     console.log("success")
+            // }
+            addTodo()
+        })
+        function render() {
+            if (localStorage.getItem("tasks") == null) return;
+
+            let tasks = Array.from(JSON.parse(localStorage.getItem("tasks")));
+            tasks.forEach(task => {
+                const task_el = document.createElement("div")
+                task_el.classList.add("task")
+
+                const task_content_el = document.createElement("div")
+                task_content_el.classList.add("content")
+                // task_content_el.innerText=task
+                task_el.appendChild(task_content_el)
+
+                const task_input_el = document.createElement("input")
+                task_input_el.classList.add("text")
+                task_input_el.type = "text"
+                task_input_el.value = task.content
+                task_input_el.setAttribute("readonly", "readonly")
+                task_content_el.appendChild(task_input_el)
+
+                const task_action_el = document.createElement("div")
+                task_action_el.classList.add("action")
+
+                const task_edit_el = document.createElement("button")
+                task_edit_el.classList.add("edit")
+                task_edit_el.innerHTML = "EDIT"
+
+                const task_delete_el = document.createElement("button")
+                task_delete_el.classList.add("delete")
+                task_delete_el.innerHTML = "DELETE"
+
+                task_action_el.appendChild(task_edit_el)
+                task_action_el.appendChild(task_delete_el)
+
+                task_el.appendChild(task_action_el)
+                list_el.appendChild(task_el)
+
+                task_edit_el.addEventListener('click', function () {
+                    if (task_edit_el.innerText.toUpperCase() == "EDIT") {
+                        task_input_el.removeAttribute("readonly")
+                        task_input_el.focus()
+                        task_edit_el.innerHTML = "SAVE"
+                    }
+                    else {
+                        task_input_el.setAttribute("readonly", "readonly") //(name,value)
+                        task_edit_el.innerText = "EDIT"
+                    }
+                })
+                task_delete_el.addEventListener('click', function () {
+                    list_el.removeChild(task_el)
+                })
+            })
+            input.value = ""
+        }
+
+        function addTodo() {
+            if (input.value != "") {
+                let Value = {
+                    content: input.value
+                }
+                let todoListArr;
+                if (localStorage.getItem("tasks") != null) {
+                    todoListArr = JSON.parse(localStorage.getItem("tasks"));
+                } else {
+                    todoListArr = [];
+                }
+                todoListArr.push(Value)
+                localStorage.setItem("tasks", JSON.stringify(todoListArr))
+                
+                input.value = "";
+            }
+        }
+
+        window.onload = function () { 
+            render()
+        }
+    </script>
+</body>
+
+</html>

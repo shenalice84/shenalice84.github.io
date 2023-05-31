@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./reset.css">
+</head>
+<style>
+    /* li{
+        list-style: none;
+        border: solid 1px #000;
+        width: 200px;
+        margin:10px auto;
+    }
+    #todo-list{
+        text-align: center;
+        margin: 30px;
+    } */
+</style>
+
+<body>
+    <div id="todo-list">
+        <input type="text" id="new-todo" placeholder="Add a new todo">
+        <button id="add-todo">Add</button>
+        <ul id="todos"></ul>
+    </div>
+
+    <script>
+        const newTodoInput = document.querySelector('#new-todo');
+        const addTodoButton = document.querySelector('#add-todo');
+        const todosList = document.querySelector('#todos');
+        
+
+        const addTodo = (todo) => {
+            const todoItem = document.createElement('li');
+            todoItem.textContent = todo;
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.addEventListener('click', () => todoItem.remove());
+            const editButton = document.createElement('button');
+            editButton.textContent = 'Edit';
+            editButton.addEventListener('click', () => {
+                const newTodo = prompt('Enter new todo', todo);
+                if (newTodo) todoItem.textContent = newTodo;
+            });
+            todoItem.appendChild(deleteButton);
+            todoItem.appendChild(editButton);
+            todosList.appendChild(todoItem);
+        };
+
+        addTodoButton.addEventListener('click', () => {
+            const newTodo = newTodoInput.value;
+            if (!newTodo) return;
+            addTodo(newTodo);
+            newTodoInput.value = '';
+        });
+
+
+        function addTodoItem() {
+            let date = addDateInput.value
+            let todoItem = addValueInput.value
+
+            let todoObj = {
+                title: todoItem
+            }
+
+            let todoList = []
+
+            if (localStorage.getItem(date) == null) {
+                todoList.push(todoObj)
+            } else {
+                todoList = JSON.parse(localStorage.getItem(date))
+                todoList.push(todoObj)
+            }
+
+            localStorage.setItem(date, JSON.stringify(todoList))
+
+            bootstrap.Modal.getOrCreateInstance(addModal).hide()
+
+            renderDate()
+        }
+
+        function editTodoItem() {
+            let date = editDateInput.value
+            let todoItem = editValueInput.value
+
+            let todoList = JSON.parse(localStorage.getItem(date))
+            
+            todoList[currentIndex] = {
+                title: todoItem
+            }
+
+            localStorage.setItem(date, JSON.stringify(todoList))
+
+            bootstrap.Modal.getOrCreateInstance(editModal).hide()
+
+            renderDate()
+        }
+
+        function deleteTodoItem() {
+            let date = editDateInput.value
+
+            let todoList = JSON.parse(localStorage.getItem(date))
+            todoList.splice(currentIndex, 1)
+
+            localStorage.setItem(date, JSON.stringify(todoList))
+
+            bootstrap.Modal.getOrCreateInstance(editModal).hide()
+
+            renderDate()
+        }
+    </script>
+
+</body>
+
+</html>
